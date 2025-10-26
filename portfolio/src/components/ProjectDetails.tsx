@@ -208,7 +208,7 @@ const ProjectDetails = () => {
                 { value: "100%", label: "データ永続化" },
                 { value: "レスポンシブ", label: "対応デバイス" }
             ],
-            images: ["/commit-create.png", "/commit-create2.png", "/commit-create3.png"],
+            images: ["./commit-create.png", "./commit-create2.png", "./commit-create3.png"],
             videos: []
         }
     ,
@@ -251,8 +251,8 @@ const ProjectDetails = () => {
                 }
             ],
             metrics: [],
-            images: ["/auto-sales-email.png", "/auto-sales-email2.png"],
-            videos: ["/動作demo.mp4"]
+            images: ["./auto-sales-email.png", "./auto-sales-email2.png"],
+            videos: ["./動作demo.mp4"]
         },
     ];
 

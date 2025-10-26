@@ -67,14 +67,14 @@ const ProjectDetail = ({ icon, title, subtitle, overview, features, techStack, c
                 </div>
 
                 {images && images.length > 0 && (
-                    <div className="mb-8 flex justify-center">
+                    <div className="mb-8">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {images.map((image, index) => (
-                                <div key={index} className="bg-[#667eea]/10 p-4 rounded-xl border border-[#667eea]/20 flex justify-center items-center">
+                                <div key={index} className="bg-[#667eea]/10 p-4 rounded-xl border border-[#667eea]/20">
                                     <img 
                                         src={image} 
                                         alt={`${title} - 画像 ${index + 1}`}
-                                        className="w-full h-64 object-contain rounded-lg shadow-md"
+                                        className="w-full h-80 md:h-96 object-contain rounded-lg shadow-md"
                                     />
                                 </div>
                             ))}

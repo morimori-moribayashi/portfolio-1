@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
 
 interface Metric {
     value: string;
@@ -24,6 +26,8 @@ interface ProjectDetailProps {
 
 const ProjectDetail = ({ icon, title, subtitle, overview, features, techStack, challenges, metrics, images }: ProjectDetailProps) => {
     const [isVisible, setIsVisible] = useState(false);
+    const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [lightboxIndex, setLightboxIndex] = useState(0);
     const detailRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -67,19 +71,32 @@ const ProjectDetail = ({ icon, title, subtitle, overview, features, techStack, c
                 </div>
 
                 {images && images.length > 0 && (
-                    <div className="mb-8">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {images.map((image, index) => (
-                                <div key={index} className="bg-[#667eea]/10 p-4 rounded-xl border border-[#667eea]/20">
-                                    <img 
-                                        src={image} 
-                                        alt={`${title} - 画像 ${index + 1}`}
-                                        className="w-full h-80 md:h-96 object-contain rounded-lg shadow-md"
-                                    />
-                                </div>
-                            ))}
+                    <>
+                        <div className="mb-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {images.map((image, index) => (
+                                    <div key={index} className="bg-[#667eea]/10 p-4 rounded-xl border border-[#667eea]/20">
+                                        <img 
+                                            src={image} 
+                                            alt={`${title} - 画像 ${index + 1}`}
+                                            className="w-full h-80 md:h-96 object-contain rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity"
+                                            onClick={() => {
+                                                setLightboxIndex(index);
+                                                setLightboxOpen(true);
+                                            }}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                        
+                        <Lightbox
+                            open={lightboxOpen}
+                            close={() => setLightboxOpen(false)}
+                            index={lightboxIndex}
+                            slides={images.map(src => ({ src }))}
+                        />
+                    </>
                 )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">

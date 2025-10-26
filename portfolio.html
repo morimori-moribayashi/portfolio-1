@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taro Yamada - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-slow {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .animate-fadeInUp-delay-1 {
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .animate-fadeInUp-delay-2 {
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .animate-fadeInUp-delay-3 {
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text-white {
+            background: linear-gradient(135deg, #ffffff 0%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .gradient-bg-light {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+        }
+        
+        .detail-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a0a] text-white overflow-x-hidden">
+    
+    <!-- Header -->
+    <header class="fixed top-0 w-full px-[5%] py-6 bg-[rgba(10,10,10,0.9)] backdrop-blur-md z-[1000] border-b border-white/10">
+        <nav class="flex justify-between items-center max-w-[1400px] mx-auto">
+            <div class="text-2xl font-bold gradient-text">TY</div>
+            <ul class="flex gap-8 list-none md:gap-4">
+                <li><a href="#home" class="text-white no-underline transition-colors duration-300 text-[0.95rem] hover:text-[#667eea]">Home</a></li>
+                <li><a href="#skills" class="text-white no-underline transition-colors duration-300 text-[0.95rem] hover:text-[#667eea]">Skills</a></li>
+                <li><a href="#projects" class="text-white no-underline transition-colors duration-300 text-[0.95rem] hover:text-[#667eea]">Projects</a></li>
+                <li><a href="#project-details" class="text-white no-underline transition-colors duration-300 text-[0.95rem] hover:text-[#667eea]">Details</a></li>
+                <li><a href="#contact" class="text-white no-underline transition-colors duration-300 text-[0.95rem] hover:text-[#667eea]">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-[5%] py-8 relative overflow-hidden">
+        <div class="absolute w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(102,126,234,0.3)_0%,transparent_70%)] -top-[250px] -right-[250px] animate-float"></div>
+        <div class="absolute w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(118,75,162,0.3)_0%,transparent_70%)] -bottom-[200px] -left-[200px] animate-float-slow"></div>
+        
+        <div class="max-w-[1400px] w-full z-10">
+            <h1 class="text-[clamp(2.5rem,8vw,5rem)] mb-4 gradient-text-white animate-fadeInUp">Taro Yamada</h1>
+            <h2 class="text-[clamp(1.2rem,3vw,2rem)] text-[#a0aec0] mb-8 animate-fadeInUp-delay-1">Full Stack Developer</h2>
+            <p class="text-lg text-[#cbd5e0] max-w-[600px] leading-relaxed mb-10 animate-fadeInUp-delay-2">
+                モダンな技術スタックを駆使して、ユーザー体験を重視したWebアプリケーションを開発しています。
+                クリーンなコードと革新的なソリューションで、ビジネス課題を解決します。
+            </p>
+            <div class="flex gap-4 flex-wrap animate-fadeInUp-delay-3">
+                <a href="#projects" class="px-8 py-4 rounded-full no-underline font-semibold transition-all duration-300 gradient-bg text-white hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(102,126,234,0.4)]">View Projects</a>
+                <a href="#contact" class="px-8 py-4 rounded-full no-underline font-semibold transition-all duration-300 bg-transparent text-white border-2 border-[#667eea] hover:bg-[rgba(102,126,234,0.1)] hover:-translate-y-1">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-[5%] max-w-[1400px] mx-auto">
+        <h2 class="text-4xl mb-12 text-center gradient-text-white">Skills & Expertise</h2>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8">
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-3 hover:bg-white/8 hover:border-[#667eea] hover:shadow-[0_10px_40px_rgba(102,126,234,0.3)]">
+                <div class="text-5xl mb-4">⚛️</div>
+                <h3 class="text-2xl mb-4 text-[#667eea]">Frontend</h3>
+                <p class="text-[#cbd5e0] leading-relaxed">モダンなUIライブラリとフレームワークを使用した、レスポンシブなWebアプリケーション開発</p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">React</span>
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Vue.js</span>
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">TypeScript</span>
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Tailwind CSS</span>
+                </div>
+            </div>
+
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-3 hover:bg-white/8 hover:border-[#667eea] hover:shadow-[0_10px_40px_rgba(102,126,234,0.3)]">
+                <div class="text-5xl mb-4">🔧</div>
+                <h3 class="text-2xl mb-4 text-[#667eea]">Backend</h3>
+                <p class="text-[#cbd5e0] leading-relaxed">スケーラブルで保守性の高いサーバーサイドアプリケーションの設計と実装</p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Node.js</span>
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Python</span>
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">PostgreSQL</span>
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">MongoDB</span>
+                </div>
+            </div>
+
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-3 hover:bg-white/8 hover:border-[#667eea] hover:shadow-[0_10px_40px_rgba(102,126,234,0.3)]">
+                <div class="text-5xl mb-4">☁️</div>
+                <h3 class="text-2xl mb-4 text-[#667eea]">Cloud & DevOps</h3>
+                <p class="text-[#cbd5e0] leading-relaxed">クラウドインフラの構築と、CI/CDパイプラインによる自動化</p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">AWS</span>
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Docker</span>
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Kubernetes</span>
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">GitHub Actions</span>
+                </div>
+            </div>
+
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-3 hover:bg-white/8 hover:border-[#667eea] hover:shadow-[0_10px_40px_rgba(102,126,234,0.3)]">
+                <div class="text-5xl mb-4">🎨</div>
+                <h3 class="text-2xl mb-4 text-[#667eea]">Design</h3>
+                <p class="text-[#cbd5e0] leading-relaxed">ユーザー中心のデザイン思考とプロトタイピング</p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Figma</span>
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">UI/UX</span>
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Design Systems</span>
+                    <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Accessibility</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-[5%] max-w-[1400px] mx-auto">
+        <h2 class="text-4xl mb-12 text-center gradient-text-white">Featured Projects</h2>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-8 max-md:grid-cols-1">
+            <div class="bg-white/5 rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_15px_50px_rgba(0,0,0,0.5)] hover:border-[#667eea]">
+                <div class="w-full h-[200px] gradient-bg flex items-center justify-center text-5xl">🛒</div>
+                <div class="p-6">
+                    <h3 class="text-2xl mb-4 text-white">E-Commerce Platform</h3>
+                    <p class="text-[#cbd5e0] mb-4 leading-relaxed">React、Next.js、Stripeを使用した本格的なECサイト。リアルタイム在庫管理と決済システムを実装。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Next.js</span>
+                        <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Stripe</span>
+                        <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">PostgreSQL</span>
+                    </div>
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="text-[#667eea] no-underline font-semibold transition-colors duration-300 hover:text-[#764ba2]">View Demo →</a>
+                        <a href="#" class="text-[#667eea] no-underline font-semibold transition-colors duration-300 hover:text-[#764ba2]">GitHub →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white/5 rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_15px_50px_rgba(0,0,0,0.5)] hover:border-[#667eea]">
+                <div class="w-full h-[200px] gradient-bg flex items-center justify-center text-5xl">📊</div>
+                <div class="p-6">
+                    <h3 class="text-2xl mb-4 text-white">Analytics Dashboard</h3>
+                    <p class="text-[#cbd5e0] mb-4 leading-relaxed">データビジュアライゼーションに特化したダッシュボード。リアルタイムデータ更新とカスタマイズ可能なウィジェット。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">React</span>
+                        <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">D3.js</span>
+                        <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">WebSocket</span>
+                    </div>
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="text-[#667eea] no-underline font-semibold transition-colors duration-300 hover:text-[#764ba2]">View Demo →</a>
+                        <a href="#" class="text-[#667eea] no-underline font-semibold transition-colors duration-300 hover:text-[#764ba2]">GitHub →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white/5 rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_15px_50px_rgba(0,0,0,0.5)] hover:border-[#667eea]">
+                <div class="w-full h-[200px] gradient-bg flex items-center justify-center text-5xl">💬</div>
+                <div class="p-6">
+                    <h3 class="text-2xl mb-4 text-white">Real-time Chat App</h3>
+                    <p class="text-[#cbd5e0] mb-4 leading-relaxed">WebSocketを活用したリアルタイムチャットアプリケーション。グループチャット、ファイル共有機能を搭載。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Vue.js</span>
+                        <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Socket.io</span>
+                        <span class="bg-[rgba(102,126,234,0.2)] px-3 py-1.5 rounded-full text-sm text-[#cbd5e0]">Redis</span>
+                    </div>
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="text-[#667eea] no-underline font-semibold transition-colors duration-300 hover:text-[#764ba2]">View Demo →</a>
+                        <a href="#" class="text-[#667eea] no-underline font-semibold transition-colors duration-300 hover:text-[#764ba2]">GitHub →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details Section -->
+    <section id="project-details" class="py-20 px-[5%] max-w-[1400px] mx-auto">
+        <h2 class="text-4xl mb-12 text-center gradient-text-white">Project Deep Dive</h2>
+        
+        <!-- E-Commerce Platform Detail -->
+        <div class="bg-white/[0.03] rounded-3xl p-12 max-md:p-6 mb-12 border border-white/10 transition-all duration-300 hover:border-[#667eea]/50 hover:shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
+            <div class="flex items-center gap-6 mb-8 pb-8 border-b border-white/10 max-md:flex-col max-md:text-center">
+                <div class="text-6xl w-[100px] h-[100px] flex items-center justify-center gradient-bg-light rounded-3xl border-2 border-[#667eea]/30 max-md:w-20 max-md:h-20 max-md:text-5xl">🛒</div>
+                <div>
+                    <h3 class="text-3xl mb-2 text-white max-md:text-2xl">E-Commerce Platform</h3>
+                    <p class="text-[#a0aec0] text-lg">フルスタックECサイト構築プロジェクト</p>
+                </div>
+            </div>
+            
+            <div class="text-[#cbd5e0]">
+                <div class="mb-8">
+                    <h4 class="text-[#667eea] text-xl mb-4 flex items-center gap-2">📋 プロジェクト概要</h4>
+                    <p class="leading-relaxed">中小企業向けの本格的なECプラットフォーム。リアルタイム在庫管理、セキュアな決済処理、管理者用ダッシュボードを統合したフルスタックアプリケーション。月間1万PVを達成し、コンバージョン率3.5%を実現。</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h4 class="text-[#667eea] text-xl mb-4 flex items-center gap-2">✨ 主要機能</h4>
+                        <ul class="list-none p-0 detail-list">
+                            <li class="py-2 pl-6 relative leading-normal">商品検索・フィルタリングシステム</li>
+                            <li class="py-2 pl-6 relative leading-normal">ショッピングカート・ウィッシュリスト</li>
+                            <li class="py-2 pl-6 relative leading-normal">Stripe連携による決済処理</li>
+                            <li class="py-2 pl-6 relative leading-normal">注文追跡・履歴管理</li>
+                            <li class="py-2 pl-6 relative leading-normal">レビュー・評価システム</li>
+                            <li class="py-2 pl-6 relative leading-normal">在庫管理・自動通知</li>
+                            <li class="py-2 pl-6 relative leading-normal">クーポン・割引機能</li>
+                            <li class="py-2 pl-6 relative leading-normal">管理者用CMS</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-[#667eea] text-xl mb-4 flex items-center gap-2">🔧 技術スタック</h4>
+                        <ul class="list-none p-0 detail-list">
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Frontend:</strong> Next.js 14, TypeScript, Tailwind CSS</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Backend:</strong> Next.js API Routes, Prisma ORM</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Database:</strong> PostgreSQL</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Payment:</strong> Stripe API</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Storage:</strong> AWS S3 (商品画像)</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Deployment:</strong> Vercel</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Auth:</strong> NextAuth.js</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h4 class="text-[#667eea] text-xl mb-4 flex items-center gap-2">💡 技術的チャレンジと解決策</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                        <div class="bg-[#667eea]/10 p-6 rounded-xl border border-[#667eea]/20">
+                            <strong class="block text-[#667eea] mb-2 text-lg">在庫管理の同期問題</strong>
+                            <p class="text-sm leading-relaxed">複数ユーザーが同時に購入する際の在庫競合を、楽観的ロックとトランザクション処理で解決。在庫不足エラーを95%削減。</p>
+                        </div>
+                        <div class="bg-[#667eea]/10 p-6 rounded-xl border border-[#667eea]/20">
+                            <strong class="block text-[#667eea] mb-2 text-lg">決済セキュリティ</strong>
+                            <p class="text-sm leading-relaxed">Stripe Webhookを活用した非同期決済処理により、セキュアかつ信頼性の高い決済フローを実装。PCI DSS準拠。</p>
+                        </div>
+                        <div class="bg-[#667eea]/10 p-6 rounded-xl border border-[#667eea]/20">
+                            <strong class="block text-[#667eea] mb-2 text-lg">画像最適化</strong>
+                            <p class="text-sm leading-relaxed">Next.js Image Optimizationと遅延読み込みにより、初期ロード時間を60%短縮。Core Web Vitalsスコア90+を達成。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8 pt-8 border-t border-white/10">
+                    <div class="text-center p-6 bg-[#667eea]/5 rounded-xl border border-[#667eea]/20">
+                        <div class="text-3xl font-bold gradient-text mb-2">1万+</div>
+                        <div class="text-sm text-[#a0aec0]">月間PV</div>
+                    </div>
+                    <div class="text-center p-6 bg-[#667eea]/5 rounded-xl border border-[#667eea]/20">
+                        <div class="text-3xl font-bold gradient-text mb-2">3.5%</div>
+                        <div class="text-sm text-[#a0aec0]">CV率</div>
+                    </div>
+                    <div class="text-center p-6 bg-[#667eea]/5 rounded-xl border border-[#667eea]/20">
+                        <div class="text-3xl font-bold gradient-text mb-2">0.8秒</div>
+                        <div class="text-sm text-[#a0aec0]">平均読み込み</div>
+                    </div>
+                    <div class="text-center p-6 bg-[#667eea]/5 rounded-xl border border-[#667eea]/20">
+                        <div class="text-3xl font-bold gradient-text mb-2">95+</div>
+                        <div class="text-sm text-[#a0aec0]">Lighthouse</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Dashboard Detail -->
+        <div class="bg-white/[0.03] rounded-3xl p-12 max-md:p-6 mb-12 border border-white/10 transition-all duration-300 hover:border-[#667eea]/50 hover:shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
+            <div class="flex items-center gap-6 mb-8 pb-8 border-b border-white/10 max-md:flex-col max-md:text-center">
+                <div class="text-6xl w-[100px] h-[100px] flex items-center justify-center gradient-bg-light rounded-3xl border-2 border-[#667eea]/30 max-md:w-20 max-md:h-20 max-md:text-5xl">📊</div>
+                <div>
+                    <h3 class="text-3xl mb-2 text-white max-md:text-2xl">Analytics Dashboard</h3>
+                    <p class="text-[#a0aec0] text-lg">リアルタイムデータ分析プラットフォーム</p>
+                </div>
+            </div>
+            
+            <div class="text-[#cbd5e0]">
+                <div class="mb-8">
+                    <h4 class="text-[#667eea] text-xl mb-4 flex items-center gap-2">📋 プロジェクト概要</h4>
+                    <p class="leading-relaxed">企業のKPI追跡とデータ分析を目的とした、リアルタイムダッシュボードシステム。複数のデータソースを統合し、カスタマイズ可能なウィジェットで視覚化。チーム全体のデータドリブンな意思決定をサポート。</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h4 class="text-[#667eea] text-xl mb-4 flex items-center gap-2">✨ 主要機能</h4>
+                        <ul class="list-none p-0 detail-list">
+                            <li class="py-2 pl-6 relative leading-normal">リアルタイムデータ更新（WebSocket）</li>
+                            <li class="py-2 pl-6 relative leading-normal">ドラッグ&ドロップでカスタマイズ可能なレイアウト</li>
+                            <li class="py-2 pl-6 relative leading-normal">10種類以上のチャート・グラフ</li>
+                            <li class="py-2 pl-6 relative leading-normal">複数データソース統合（API、CSV、DB）</li>
+                            <li class="py-2 pl-6 relative leading-normal">カスタムアラート・通知設定</li>
+                            <li class="py-2 pl-6 relative leading-normal">PDFレポート自動生成</li>
+                            <li class="py-2 pl-6 relative leading-normal">チーム共有・権限管理</li>
+                            <li class="py-2 pl-6 relative leading-normal">ダークモード対応</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-[#667eea] text-xl mb-4 flex items-center gap-2">🔧 技術スタック</h4>
+                        <ul class="list-none p-0 detail-list">
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Frontend:</strong> React 18, TypeScript, Recharts</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">State Management:</strong> Zustand</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Backend:</strong> Node.js, Express</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Real-time:</strong> Socket.io</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Database:</strong> MongoDB, Redis (キャッシュ)</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Data Processing:</strong> Apache Kafka</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Deployment:</strong> Docker, AWS ECS</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h4 class="text-[#667eea] text-xl mb-4 flex items-center gap-2">💡 技術的チャレンジと解決策</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                        <div class="bg-[#667eea]/10 p-6 rounded-xl border border-[#667eea]/20">
+                            <strong class="block text-[#667eea] mb-2 text-lg">大量データのパフォーマンス</strong>
+                            <p class="text-sm leading-relaxed">仮想スクロール、データページネーション、Redisキャッシングにより、100万件のデータを瞬時に表示。レスポンスタイムを80%改善。</p>
+                        </div>
+                        <div class="bg-[#667eea]/10 p-6 rounded-xl border border-[#667eea]/20">
+                            <strong class="block text-[#667eea] mb-2 text-lg">リアルタイム同期</strong>
+                            <p class="text-sm leading-relaxed">Socket.ioとRedis Pub/Subを活用し、複数クライアント間でのデータ同期を実現。遅延を50ms以下に抑制。</p>
+                        </div>
+                        <div class="bg-[#667eea]/10 p-6 rounded-xl border border-[#667eea]/20">
+                            <strong class="block text-[#667eea] mb-2 text-lg">複雑なチャート描画</strong>
+                            <p class="text-sm leading-relaxed">Web Workerでのデータ処理とCanvas最適化により、複雑なグラフもスムーズに描画。60FPSを維持。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8 pt-8 border-t border-white/10">
+                    <div class="text-center p-6 bg-[#667eea]/5 rounded-xl border border-[#667eea]/20">
+                        <div class="text-3xl font-bold gradient-text mb-2">100万+</div>
+                        <div class="text-sm text-[#a0aec0]">処理データ件数</div>
+                    </div>
+                    <div class="text-center p-6 bg-[#667eea]/5 rounded-xl border border-[#667eea]/20">
+                        <div class="text-3xl font-bold gradient-text mb-2">&lt;50ms</div>
+                        <div class="text-sm text-[#a0aec0]">更新遅延</div>
+                    </div>
+                    <div class="text-center p-6 bg-[#667eea]/5 rounded-xl border border-[#667eea]/20">
+                        <div class="text-3xl font-bold gradient-text mb-2">500+</div>
+                        <div class="text-sm text-[#a0aec0]">同時接続</div>
+                    </div>
+                    <div class="text-center p-6 bg-[#667eea]/5 rounded-xl border border-[#667eea]/20">
+                        <div class="text-3xl font-bold gradient-text mb-2">99.9%</div>
+                        <div class="text-sm text-[#a0aec0]">稼働率</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-time Chat App Detail -->
+        <div class="bg-white/[0.03] rounded-3xl p-12 max-md:p-6 mb-12 border border-white/10 transition-all duration-300 hover:border-[#667eea]/50 hover:shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
+            <div class="flex items-center gap-6 mb-8 pb-8 border-b border-white/10 max-md:flex-col max-md:text-center">
+                <div class="text-6xl w-[100px] h-[100px] flex items-center justify-center gradient-bg-light rounded-3xl border-2 border-[#667eea]/30 max-md:w-20 max-md:h-20 max-md:text-5xl">💬</div>
+                <div>
+                    <h3 class="text-3xl mb-2 text-white max-md:text-2xl">Real-time Chat Application</h3>
+                    <p class="text-[#a0aec0] text-lg">エンタープライズ向けチャットシステム</p>
+                </div>
+            </div>
+            
+            <div class="text-[#cbd5e0]">
+                <div class="mb-8">
+                    <h4 class="text-[#667eea] text-xl mb-4 flex items-center gap-2">📋 プロジェクト概要</h4>
+                    <p class="leading-relaxed">企業内コミュニケーションを効率化する、フル機能のリアルタイムチャットアプリケーション。Slackライクなインターフェースで、1000人以上のユーザーが同時利用可能。エンドツーエンド暗号化により、セキュアなコミュニケーションを実現。</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h4 class="text-[#667eea] text-xl mb-4 flex items-center gap-2">✨ 主要機能</h4>
+                        <ul class="list-none p-0 detail-list">
+                            <li class="py-2 pl-6 relative leading-normal">1対1・グループチャット</li>
+                            <li class="py-2 pl-6 relative leading-normal">ファイル・画像共有（最大100MB）</li>
+                            <li class="py-2 pl-6 relative leading-normal">音声・ビデオ通話（WebRTC）</li>
+                            <li class="py-2 pl-6 relative leading-normal">メッセージ検索・フィルタ</li>
+                            <li class="py-2 pl-6 relative leading-normal">既読・未読管理</li>
+                            <li class="py-2 pl-6 relative leading-normal">リアクション・スレッド返信</li>
+                            <li class="py-2 pl-6 relative leading-normal">通知設定・ミュート機能</li>
+                            <li class="py-2 pl-6 relative leading-normal">メンション・@通知</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-[#667eea] text-xl mb-4 flex items-center gap-2">🔧 技術スタック</h4>
+                        <ul class="list-none p-0 detail-list">
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Frontend:</strong> Vue.js 3, TypeScript, Pinia</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">UI:</strong> Element Plus, Custom Components</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Backend:</strong> Node.js, NestJS</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Real-time:</strong> Socket.io, WebRTC</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Database:</strong> PostgreSQL, Redis</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Storage:</strong> MinIO (自社ホスト)</li>
+                            <li class="py-2 pl-6 relative leading-normal"><strong class="text-white">Encryption:</strong> End-to-End Encryption</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h4 class="text-[#667eea] text-xl mb-4 flex items-center gap-2">💡 技術的チャレンジと解決策</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                        <div class="bg-[#667eea]/10 p-6 rounded-xl border border-[#667eea]/20">
+                            <strong class="block text-[#667eea] mb-2 text-lg">スケーラビリティ</strong>
+                            <p class="text-sm leading-relaxed">Redis Adapter + Socket.io Clusteringにより、水平スケーリングを実現。1000人以上の同時接続をサポート。</p>
+                        </div>
+                        <div class="bg-[#667eea]/10 p-6 rounded-xl border border-[#667eea]/20">
+                            <strong class="block text-[#667eea] mb-2 text-lg">メッセージ配信の信頼性</strong>
+                            <p class="text-sm leading-relaxed">ACK機構とメッセージキューにより、ネットワーク不安定時でもメッセージロストゼロを実現。再接続時の自動同期機能を実装。</p>
+                        </div>
+                        <div class="bg-[#667eea]/10 p-6 rounded-xl border border-[#667eea]/20">
+                            <strong class="block text-[#667eea] mb-2 text-lg">セキュリティ</strong>
+                            <p class="text-sm leading-relaxed">Signal Protocolベースのエンドツーエンド暗号化により、サーバー管理者でもメッセージ内容を閲覧不可能に。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8 pt-8 border-t border-white/10">
+                    <div class="text-center p-6 bg-[#667eea]/5 rounded-xl border border-[#667eea]/20">
+                        <div class="text-3xl font-bold gradient-text mb-2">1000+</div>
+                        <div class="text-sm text-[#a0aec0]">同時接続</div>
+                    </div>
+                    <div class="text-center p-6 bg-[#667eea]/5 rounded-xl border border-[#667eea]/20">
+                        <div class="text-3xl font-bold gradient-text mb-2">10万+</div>
+                        <div class="text-sm text-[#a0aec0]">日次メッセージ</div>
+                    </div>
+                    <div class="text-center p-6 bg-[#667eea]/5 rounded-xl border border-[#667eea]/20">
+                        <div class="text-3xl font-bold gradient-text mb-2">100ms</div>
+                        <div class="text-sm text-[#a0aec0]">メッセージ遅延</div>
+                    </div>
+                    <div class="text-center p-6 bg-[#667eea]/5 rounded-xl border border-[#667eea]/20">
+                        <div class="text-3xl font-bold gradient-text mb-2">E2E</div>
+                        <div class="text-sm text-[#a0aec0]">暗号化</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-[5%] max-w-[1400px] mx-auto">
+        <div class="text-center bg-white/[0.03] rounded-3xl p-16 max-md:p-8 border border-white/10">
+            <h2 class="text-4xl mb-4 gradient-text-white">Let's Connect</h2>
+            <p class="text-[#cbd5e0] text-lg max-w-[600px] mx-auto mb-8">
+                新しいプロジェクトやコラボレーションの機会について、お気軽にご連絡ください。
+            </p>
+            <div class="flex justify-center gap-8 mt-8 max-sm:gap-4">
+                <a href="#" class="w-[60px] h-[60px] rounded-full bg-[#667eea]/10 flex items-center justify-center text-[#667eea] no-underline text-2xl border-2 border-[#667eea]/30 transition-all duration-300 hover:bg-[#667eea] hover:text-white hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(102,126,234,0.4)]" title="GitHub">G</a>
+                <a href="#" class="w-[60px] h-[60px] rounded-full bg-[#667eea]/10 flex items-center justify-center text-[#667eea] no-underline text-2xl border-2 border-[#667eea]/30 transition-all duration-300 hover:bg-[#667eea] hover:text-white hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(102,126,234,0.4)]" title="LinkedIn">in</a>
+                <a href="#" class="w-[60px] h-[60px] rounded-full bg-[#667eea]/10 flex items-center justify-center text-[#667eea] no-underline text-2xl border-2 border-[#667eea]/30 transition-all duration-300 hover:bg-[#667eea] hover:text-white hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(102,126,234,0.4)]" title="Twitter">𝕏</a>
+                <a href="mailto:example@email.com" class="w-[60px] h-[60px] rounded-full bg-[#667eea]/10 flex items-center justify-center text-[#667eea] no-underline text-2xl border-2 border-[#667eea]/30 transition-all duration-300 hover:bg-[#667eea] hover:text-white hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(102,126,234,0.4)]" title="Email">✉</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 px-[5%] text-[#718096] border-t border-white/10">
+        <p>&copy; 2025 Taro Yamada. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // スクロールアニメーション
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.bg-white\\/5, .bg-white\\/\\[0\\.03\\]').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

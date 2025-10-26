@@ -129,7 +129,7 @@ const ProjectDetailsSection: React.FC<ProjectDetailsProps> = () => {
                 <li className="py-2 pl-6 relative leading-normal"><strong className="text-white">Real-time:</strong> Socket.io</li>
                 <li className="py-2 pl-6 relative leading-normal"><strong className="text-white">Database:</strong> MongoDB, Redis (キャッシュ)</li>
                 <li className="py-2 pl-6 relative leading-normal"><strong className="text-white">Data Processing:</strong> Apache Kafka</li>
-                <li className="py-2 pl-6 relative leaving-normal"><strong className="text-white">Deployment:</strong> Docker, AWS ECS</li>
+                <li className="py-2 pl-6 relative leading-normal"><strong className="text-white">Deployment:</strong> Docker, AWS ECS</li>
               </ul>
             </div>
           </div>

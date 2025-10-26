@@ -8,25 +8,25 @@ const SkillsSection: React.FC<SkillsSectionProps> = () => {
       icon: "⚛️",
       title: "Frontend",
       description: "モダンなUIライブラリとフレームワークを使用した、レスポンシブなWebアプリケーション開発",
-      skills: ["React", "Vue.js", "TypeScript", "Tailwind CSS"]
+      tags: ["React", "Vue.js", "TypeScript", "Tailwind CSS"]
     },
     {
       icon: "🔧",
       title: "Backend",
       description: "スケーラブルで保守性の高いサーバーサイドアプリケーションの設計と実装",
-      skills: ["Node.js", "Python", "PostgreSQL", "MongoDB"]
+      tags: ["Node.js", "Python", "PostgreSQL", "MongoDB"]
     },
     {
       icon: "☁️",
       title: "Cloud & DevOps",
       description: "クラウドインフラの構築と、CI/CDパイプラインによる自動化",
-      skills: ["AWS", "Docker", "Kubernetes", "GitHub Actions"]
+      tags: ["AWS", "Docker", "Kubernetes", "GitHub Actions"]
     },
     {
       icon: "🎨",
       title: "Design",
       description: "ユーザー中心のデザイン思考とプロトタイピング",
-      skills: ["Figma", "UI/UX", "Design Systems", "Accessibility"]
+      tags: ["Figma", "UI/UX", "Design Systems", "Accessibility"]
     }
   ];
 
@@ -40,7 +40,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = () => {
             icon={skill.icon}
             title={skill.title}
             description={skill.description}
-            skills={skill.skills}
+            tags={skill.tags}
           />
         ))}
       </div>

@@ -11,19 +11,19 @@ import Footer from './components/Footer'
 function App() {
   useEffect(() => {
     // スムーススクロール
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+    document.querySelectorAll('a[href="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href') || '');
+        const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href') || '';
+        const target = document.querySelector(href);
         if (target) {
-          target.scrollIntoView({
+          (target as HTMLElement).scrollIntoView({
             behavior: 'smooth',
             block: 'start'
           });
         }
       });
     });
-
     // スクロールアニメーション
     const observerOptions = {
       threshold: 0.1,
@@ -54,7 +54,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-[#0a0a0a] text-white overflow-x-hidden">
+    <div className="overflow-x-hidden bg-[#1a1a2e] text-white">
       <Header />
       <HeroSection />
       <SkillsSection />

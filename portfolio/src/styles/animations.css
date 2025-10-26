@@ -39,31 +39,31 @@
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #8ba6ff 0%, #a999db 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-white {
-  background: linear-gradient(135deg, #ffffff 0%, #667eea 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #8ba6ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-bg {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #8ba6ff 0%, #a999db 100%);
 }
 
 .gradient-bg-light {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+  background: linear-gradient(135deg, rgba(139, 166, 255, 0.3) 0%, rgba(169, 153, 219, 0.3) 100%);
 }
 
 .detail-list li::before {
   content: '▹';
   position: absolute;
   left: 0;
-  color: #667eea;
+  color: #8ba6ff;
   font-weight: bold;
 }

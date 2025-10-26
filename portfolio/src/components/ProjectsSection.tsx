@@ -8,19 +8,25 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
       icon: "🛒",
       title: "E-Commerce Platform",
       description: "React、Next.js、Stripeを使用した本格的なECサイト。リアルタイム在庫管理と決済システムを実装。",
-      technologies: ["Next.js", "Stripe", "PostgreSQL"]
+      tags: ["Next.js", "Stripe", "PostgreSQL"],
+      demoLink: "#",
+      githubLink: "#"
     },
     {
       icon: "📊",
       title: "Analytics Dashboard",
       description: "データビジュアライゼーションに特化したダッシュボード。リアルタイムデータ更新とカスタマイズ可能なウィジェット。",
-      technologies: ["React", "D3.js", "WebSocket"]
+      tags: ["React", "D3.js", "WebSocket"],
+      demoLink: "#",
+      githubLink: "#"
     },
     {
       icon: "💬",
       title: "Real-time Chat App",
       description: "WebSocketを活用したリアルタイムチャットアプリケーション。グループチャット、ファイル共有機能を搭載。",
-      technologies: ["Vue.js", "Socket.io", "Redis"]
+      tags: ["Vue.js", "Socket.io", "Redis"],
+      demoLink: "#",
+      githubLink: "#"
     }
   ];
 
@@ -34,7 +40,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = () => {
             icon={project.icon}
             title={project.title}
             description={project.description}
-            technologies={project.technologies}
+            tags={project.tags}
+            demoLink={project.demoLink}
+            githubLink={project.githubLink}
           />
         ))}
       </div>

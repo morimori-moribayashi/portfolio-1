@@ -62,7 +62,7 @@ const ProjectCard = ({ icon, title, description, tags, demoLink, githubLink }: P
 const Projects = () => {
     const projects = [
         {
-            icon: "🛒",
+            icon: "📝",
             title: "日報自動作成ツール",
             description: "業務での朝夕の業務報告書の作成を効率化するReactアプリケーション。TODO/実績項目を管理し、定型文を自動生成してワンクリックでコピーできます。",
             tags: ["React", "Javascript", "Tailwind CSS"],

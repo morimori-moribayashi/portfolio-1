@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
+import Video from 'yet-another-react-lightbox/plugins/video';
 import 'yet-another-react-lightbox/styles.css';
 
 interface Metric {
@@ -22,9 +23,10 @@ interface ProjectDetailProps {
     challenges: Challenge[];
     metrics: Metric[];
     images?: string[];
+    videos?: string[];
 }
 
-const ProjectDetail = ({ icon, title, subtitle, overview, features, techStack, challenges, metrics, images }: ProjectDetailProps) => {
+const ProjectDetail = ({ icon, title, subtitle, overview, features, techStack, challenges, images, videos }: ProjectDetailProps) => {
     const [isVisible, setIsVisible] = useState(false);
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -70,18 +72,39 @@ const ProjectDetail = ({ icon, title, subtitle, overview, features, techStack, c
                     <p className="leading-relaxed">{overview}</p>
                 </div>
 
-                {images && images.length > 0 && (
+                {((images && images.length > 0) || (videos && videos.length > 0)) && (
                     <>
                         <div className="mb-8">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {images.map((image, index) => (
-                                    <div key={index} className="bg-[#667eea]/10 p-4 rounded-xl border border-[#667eea]/20">
-                                        <img 
-                                            src={image} 
-                                            alt={`${title} - 画像 ${index + 1}`}
+                                {/* 動画表示 */}
+                                {videos && videos.map((video, index) => (
+                                    <div key={`video-${index}`} className="bg-[#667eea]/10 p-4 rounded-xl border border-[#667eea]/20">
+                                        <video 
+                                            src={video}
+                                            controls={false}
+                                            loop={true}
+                                            muted={true}
+                                            autoPlay={true}
                                             className="w-full h-80 md:h-96 object-contain rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity"
                                             onClick={() => {
                                                 setLightboxIndex(index);
+                                                setLightboxOpen(true);
+                                            }}
+                                        >
+                                            お使いのブラウザは動画再生に対応していません。
+                                        </video>
+                                    </div>
+                                ))}
+                                
+                                {/* 画像表示 */}
+                                {images && images.map((image, index) => (
+                                    <div key={`img-${index}`} className="bg-[#667eea]/10 p-1 rounded-xl border border-[#667eea]/20">
+                                        <img 
+                                            src={image} 
+                                            alt={`${title} - 画像 ${index + 1}`}
+                                            className="w-full h-80 md:h-80 object-contain rounded-lg shadow-md cursor-pointer hover:opacity-80 transition-opacity"
+                                            onClick={() => {
+                                                setLightboxIndex((videos?.length || 0) + index);
                                                 setLightboxOpen(true);
                                             }}
                                         />
@@ -94,7 +117,11 @@ const ProjectDetail = ({ icon, title, subtitle, overview, features, techStack, c
                             open={lightboxOpen}
                             close={() => setLightboxOpen(false)}
                             index={lightboxIndex}
-                            slides={images.map(src => ({ src }))}
+                            plugins={[Video]}
+                            slides={[
+                                ...(videos?.map(src => ({ type: 'video', sources: [{ src, type: 'video/mp4' }] })) || []),
+                                ...(images?.map(src => ({ src })) || [])
+                            ] as any[]}
                         />
                     </>
                 )}
@@ -181,7 +208,8 @@ const ProjectDetails = () => {
                 { value: "100%", label: "データ永続化" },
                 { value: "レスポンシブ", label: "対応デバイス" }
             ],
-            images: ["/commit-create.png"]
+            images: ["/commit-create.png", "/commit-create2.png", "/commit-create3.png"],
+            videos: []
         }
     ,
         {
@@ -223,7 +251,8 @@ const ProjectDetails = () => {
                 }
             ],
             metrics: [],
-            images: ["/auto-sales-email.png"]
+            images: ["/auto-sales-email.png", "/auto-sales-email2.png"],
+            videos: ["/動作demo.mp4"]
         },
     ];
 

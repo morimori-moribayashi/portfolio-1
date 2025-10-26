@@ -49,7 +49,9 @@ const ProjectCard = ({ icon, title, description, tags, demoLink, githubLink }: P
                     ))}
                 </div>
                 <div className="flex gap-4 mt-6">
+                    {demoLink !== "" &&
                     <a href={demoLink} className="text-[#667eea] no-underline font-semibold transition-colors duration-300 hover:text-[#764ba2]">View Demo →</a>
+                    }
                     <a href={githubLink} className="text-[#667eea] no-underline font-semibold transition-colors duration-300 hover:text-[#764ba2]">GitHub →</a>
                 </div>
             </div>
@@ -61,33 +63,25 @@ const Projects = () => {
     const projects = [
         {
             icon: "🛒",
-            title: "E-Commerce Platform",
-            description: "React、Next.js、Stripeを使用した本格的なECサイト。リアルタイム在庫管理と決済システムを実装。",
-            tags: ["Next.js", "Stripe", "PostgreSQL"],
-            demoLink: "#",
-            githubLink: "#"
+            title: "日報自動作成ツール",
+            description: "業務での朝夕の業務報告書の作成を効率化するReactアプリケーション。TODO/実績項目を管理し、定型文を自動生成してワンクリックでコピーできます。",
+            tags: ["React", "Javascript", "Tailwind CSS"],
+            demoLink: "https://morimori-moribayashi.github.io/Commit-Create/",
+            githubLink: "https://github.com/morimori-moribayashi/Commit-Create"
         },
         {
-            icon: "📊",
-            title: "Analytics Dashboard",
-            description: "データビジュアライゼーションに特化したダッシュボード。リアルタイムデータ更新とカスタマイズ可能なウィジェット。",
-            tags: ["React", "D3.js", "WebSocket"],
-            demoLink: "#",
-            githubLink: "#"
+            icon: "📧",
+            title: "SES営業メール自動生成・案件リサーチシステム",
+            description: "AI駆動の営業メール自動生成システム。Gmail API連携による案件リサーチ機能とWebSocketを活用したリアルタイム処理で営業活動を効率化。",
+            tags: ["Next.js", "TypeScript", "OpenAI API", "Socket.IO", "Gmail API"],
+            demoLink: "",
+            githubLink: "https://github.com/morimori-moribayashi/auto-sales-email"
         },
-        {
-            icon: "💬",
-            title: "Real-time Chat App",
-            description: "WebSocketを活用したリアルタイムチャットアプリケーション。グループチャット、ファイル共有機能を搭載。",
-            tags: ["Vue.js", "Socket.io", "Redis"],
-            demoLink: "#",
-            githubLink: "#"
-        }
     ];
 
     return (
         <section id="projects" className="py-20 px-[5%] max-w-[1400px] mx-auto">
-            <h2 className="text-4xl mb-12 text-center gradient-text-white">Featured Projects</h2>
+            <h2 className="text-4xl mb-12 text-center gradient-text-white">個人開発プロジェクト</h2>
             <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-8 max-md:grid-cols-1">
                 {projects.map((project, index) => (
                     <ProjectCard key={index} {...project} />

@@ -19,9 +19,10 @@ interface ProjectDetailProps {
     techStack: string[];
     challenges: Challenge[];
     metrics: Metric[];
+    images?: string[];
 }
 
-const ProjectDetail = ({ icon, title, subtitle, overview, features, techStack, challenges, metrics }: ProjectDetailProps) => {
+const ProjectDetail = ({ icon, title, subtitle, overview, features, techStack, challenges, metrics, images }: ProjectDetailProps) => {
     const [isVisible, setIsVisible] = useState(false);
     const detailRef = useRef<HTMLDivElement>(null);
 
@@ -65,6 +66,22 @@ const ProjectDetail = ({ icon, title, subtitle, overview, features, techStack, c
                     <p className="leading-relaxed">{overview}</p>
                 </div>
 
+                {images && images.length > 0 && (
+                    <div className="mb-8 flex justify-center">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {images.map((image, index) => (
+                                <div key={index} className="bg-[#667eea]/10 p-4 rounded-xl border border-[#667eea]/20 flex justify-center items-center">
+                                    <img 
+                                        src={image} 
+                                        alt={`${title} - 画像 ${index + 1}`}
+                                        className="w-full h-64 object-contain rounded-lg shadow-md"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                     <div>
                         <h4 className="text-[#667eea] text-xl mb-4 flex items-center gap-2">✨ 主要機能</h4>
@@ -96,15 +113,6 @@ const ProjectDetail = ({ icon, title, subtitle, overview, features, techStack, c
                         ))}
                     </div>
                 </div>
-
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8 pt-8 border-t border-white/10">
-                    {metrics.map((metric, index) => (
-                        <div key={index} className="text-center p-6 bg-[#667eea]/5 rounded-xl border border-[#667eea]/20">
-                            <div className="text-3xl font-bold gradient-text mb-2">{metric.value}</div>
-                            <div className="text-sm text-[#a0aec0]">{metric.label}</div>
-                        </div>
-                    ))}
-                </div>
             </div>
         </div>
     );
@@ -112,141 +120,94 @@ const ProjectDetail = ({ icon, title, subtitle, overview, features, techStack, c
 
 const ProjectDetails = () => {
     const projectDetails = [
-        {
-            icon: "🛒",
-            title: "E-Commerce Platform",
-            subtitle: "フルスタックECサイト構築プロジェクト",
-            overview: "中小企業向けの本格的なECプラットフォーム。リアルタイム在庫管理、セキュアな決済処理、管理者用ダッシュボードを統合したフルスタックアプリケーション。月間1万PVを達成し、コンバージョン率3.5%を実現。",
+            {
+            icon: "📝",
+            title: "Commit-Create",
+            subtitle: "朝会・終業報告自動生成ツール",
+            overview: "日々の朝会メッセージと終業報告を効率的に作成できるWebアプリケーション。コミット内容をチェックリスト形式で管理し、達成率に応じた報告文を自動生成。LocalStorageによるデータ永続化で、入力内容を保持しながらスムーズな業務報告をサポート。",
             features: [
-                "商品検索・フィルタリングシステム",
-                "ショッピングカート・ウィッシュリスト",
-                "Stripe連携による決済処理",
-                "注文追跡・履歴管理",
-                "レビュー・評価システム",
-                "在庫管理・自動通知",
-                "クーポン・割引機能",
-                "管理者用CMS"
+                "朝会メッセージの自動生成",
+                "終業報告の自動生成（達成/未達の自動分類）",
+                "チェックリスト形式のコミット管理",
+                "達成率のパーセンテージ設定（0-90%）",
+                "複数行対応のコミット入力",
+                "ワンクリックでクリップボードにコピー",
+                "LocalStorageによるデータ自動保存",
+                "レスポンシブデザイン対応"
             ],
             techStack: [
-                "<strong class='text-white'>Frontend:</strong> Next.js 14, TypeScript, Tailwind CSS",
-                "<strong class='text-white'>Backend:</strong> Next.js API Routes, Prisma ORM",
-                "<strong class='text-white'>Database:</strong> PostgreSQL",
-                "<strong class='text-white'>Payment:</strong> Stripe API",
-                "<strong class='text-white'>Storage:</strong> AWS S3 (商品画像)",
-                "<strong class='text-white'>Deployment:</strong> Vercel",
-                "<strong class='text-white'>Auth:</strong> NextAuth.js"
+                "Frontend: React 18, Vite",
+                "Styling: Tailwind CSS",
+                "State Management: React Hooks (useState, useEffect)",
+                "Utilities: clsx (条件付きクラス管理)",
+                "Storage: LocalStorage API",
+                "Deployment: GitHub Pages",
+                "Build Tool: Vite 6"
             ],
             challenges: [
                 {
-                    title: "在庫管理の同期問題",
-                    description: "複数ユーザーが同時に購入する際の在庫競合を、楽観的ロックとトランザクション処理で解決。在庫不足エラーを95%削減。"
+                    title: "データ永続化の最適化",
+                    description: "useEffectと500msの遅延保存により、頻繁な入力変更でもパフォーマンスを維持しながらLocalStorageへの自動保存を実現。クリーンアップ処理でメモリリークを防止。"
                 },
                 {
-                    title: "決済セキュリティ",
-                    description: "Stripe Webhookを活用した非同期決済処理により、セキュアかつ信頼性の高い決済フローを実装。PCI DSS準拠。"
+                    title: "複数行テキストの整形処理",
+                    description: "改行を含むコミット内容を適切にインデントして表示する文字列処理を実装。`\\n`を`\\n　　`に置換することで、報告文の可読性を向上。"
                 },
                 {
-                    title: "画像最適化",
-                    description: "Next.js Image Optimizationと遅延読み込みにより、初期ロード時間を60%短縮。Core Web Vitalsスコア90+を達成。"
+                    title: "UXの向上",
+                    description: "コピーボタンの視覚的フィードバック（2秒間のラベル変更）、Ctrl+Enterでの項目追加、空文字列の自動フィルタリングなど、細かなUI/UX改善を実装。"
                 }
             ],
             metrics: [
-                { value: "1万+", label: "月間PV" },
-                { value: "3.5%", label: "CV率" },
-                { value: "0.8秒", label: "平均読み込み" },
-                { value: "95+", label: "Lighthouse" }
-            ]
-        },
-        {
-            icon: "📊",
-            title: "Analytics Dashboard",
-            subtitle: "リアルタイムデータ分析プラットフォーム",
-            overview: "企業のKPI追跡とデータ分析を目的とした、リアルタイムダッシュボードシステム。複数のデータソースを統合し、カスタマイズ可能なウィジェットで視覚化。チーム全体のデータドリブンな意思決定をサポート。",
-            features: [
-                "リアルタイムデータ更新（WebSocket）",
-                "ドラッグ&ドロップでカスタマイズ可能なレイアウト",
-                "10種類以上のチャート・グラフ",
-                "複数データソース統合（API、CSV、DB）",
-                "カスタムアラート・通知設定",
-                "PDFレポート自動生成",
-                "チーム共有・権限管理",
-                "ダークモード対応"
+                { value: "500ms", label: "自動保存間隔" },
+                { value: "2秒", label: "コピー完了表示" },
+                { value: "100%", label: "データ永続化" },
+                { value: "レスポンシブ", label: "対応デバイス" }
             ],
-            techStack: [
-                "<strong class='text-white'>Frontend:</strong> React 18, TypeScript, Recharts",
-                "<strong class='text-white'>State Management:</strong> Zustand",
-                "<strong class='text-white'>Backend:</strong> Node.js, Express",
-                "<strong class='text-white'>Real-time:</strong> Socket.io",
-                "<strong class='text-white'>Database:</strong> MongoDB, Redis (キャッシュ)",
-                "<strong class='text-white'>Data Processing:</strong> Apache Kafka",
-                "<strong class='text-white'>Deployment:</strong> Docker, AWS ECS"
-            ],
-            challenges: [
-                {
-                    title: "大量データのパフォーマンス",
-                    description: "仮想スクロール、データページネーション、Redisキャッシングにより、100万件のデータを瞬時に表示。レスポンスタイムを80%改善。"
-                },
-                {
-                    title: "リアルタイム同期",
-                    description: "Socket.ioとRedis Pub/Subを活用し、複数クライアント間でのデータ同期を実現。遅延を50ms以下に抑制。"
-                },
-                {
-                    title: "複雑なチャート描画",
-                    description: "Web Workerでのデータ処理とCanvas最適化により、複雑なグラフもスムーズに描画。60FPSを維持。"
-                }
-            ],
-            metrics: [
-                { value: "100万+", label: "処理データ件数" },
-                { value: "<50ms", label: "更新遅延" },
-                { value: "500+", label: "同時接続" },
-                { value: "99.9%", label: "稼働率" }
-            ]
-        },
-        {
-            icon: "💬",
-            title: "Real-time Chat Application",
-            subtitle: "エンタープライズ向けチャットシステム",
-            overview: "企業内コミュニケーションを効率化する、フル機能のリアルタイムチャットアプリケーション。Slackライクなインターフェースで、1000人以上のユーザーが同時利用可能。エンドツーエンド暗号化により、セキュアなコミュニケーションを実現。",
-            features: [
-                "1対1・グループチャット",
-                "ファイル・画像共有（最大100MB）",
-                "音声・ビデオ通話（WebRTC）",
-                "メッセージ検索・フィルタ",
-                "既読・未読管理",
-                "リアクション・スレッド返信",
-                "通知設定・ミュート機能",
-                "メンション・@通知"
-            ],
-            techStack: [
-                "<strong class='text-white'>Frontend:</strong> Vue.js 3, TypeScript, Pinia",
-                "<strong class='text-white'>UI:</strong> Element Plus, Custom Components",
-                "<strong class='text-white'>Backend:</strong> Node.js, NestJS",
-                "<strong class='text-white'>Real-time:</strong> Socket.io, WebRTC",
-                "<strong class='text-white'>Database:</strong> PostgreSQL, Redis",
-                "<strong class='text-white'>Storage:</strong> MinIO (自社ホスト)",
-                "<strong class='text-white'>Encryption:</strong> End-to-End Encryption"
-            ],
-            challenges: [
-                {
-                    title: "スケーラビリティ",
-                    description: "Redis Adapter + Socket.io Clusteringにより、水平スケーリングを実現。1000人以上の同時接続をサポート。"
-                },
-                {
-                    title: "メッセージ配信の信頼性",
-                    description: "ACK機構とメッセージキューにより、ネットワーク不安定時でもメッセージロストゼロを実現。再接続時の自動同期機能を実装。"
-                },
-                {
-                    title: "セキュリティ",
-                    description: "Signal Protocolベースのエンドツーエンド暗号化により、サーバー管理者でもメッセージ内容を閲覧不可能に。"
-                }
-            ],
-            metrics: [
-                { value: "1000+", label: "同時接続" },
-                { value: "10万+", label: "日次メッセージ" },
-                { value: "100ms", label: "メッセージ遅延" },
-                { value: "E2E", label: "暗号化" }
-            ]
+            images: ["/commit-create.png"]
         }
+    ,
+        {
+            icon: "📧",
+            title: "SES営業メール自動生成・案件リサーチシステム",
+            subtitle: "OpenAIとGmailを活用した営業支援・求人マッチングツール",
+            overview: "SES企業の営業担当者の業務効率化を目指し、個人開発で取り組んだAI活用型の営業支援ツールです。実際の営業現場の課題を解決するため、OpenAIとGmail APIを連携させた実用的なシステムを設計・実装しました。",
+            features: [
+                "AI駆動の営業メール自動生成・編集",
+                "エンジニアプロファイルに基づくGmail検索クエリ作成",
+                "PDFアップロードとマークダウン変換",
+                "案件情報の深層分析と評価（DeepResearch）",
+                "複数戦略に基づく案件検索とフィルタリング",
+                "マッチング分析とアクション提案",
+                "リアルタイムストリーミングレスポンス"
+            ],
+            techStack: [
+                "Frontend: Next.js 15.5, React 19, Material UI, TailwindCSS",
+                "Backend: Node.js, Express, Socket.IO",
+                "AI: OpenAI GPT-4.1系列",
+                "API: Gmail API連携",
+                "Integration: WebSocket, Server-Sent Events",
+                "Containerization: Docker",
+                "State Management: React Hooks",
+                "Form Processing: zod, FormData"
+            ],
+            challenges: [
+                {
+                    title: "複雑なAIプロンプト設計",
+                    description: "複数ステップの深層分析を実現するための精密なAIプロンプト設計と応答解析システムを構築。戦略立案からフィルター生成、評価まで一貫したAI処理パイプラインを実装。"
+                },
+                {
+                    title: "リアルタイムプロセス可視化",
+                    description: "WebSocketとServer-Sent Eventsを活用し、長時間かかる処理をリアルタイムに進捗表示。複雑なAI処理ステップをユーザーに視覚的に伝えるインジケーターシステムを開発。"
+                },
+                {
+                    title: "Gmail API統合と検索最適化",
+                    description: "Gmail APIを効果的に活用するためのフィルター生成アルゴリズムと並列検索処理を実装。レート制限に対応し、大量メールの効率的な検索・分析を実現。"
+                }
+            ],
+            metrics: [],
+            images: ["/auto-sales-email.png"]
+        },
     ];
 
     return (
